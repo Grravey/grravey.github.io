@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alex & Jordan | Wedding Celebration</title>
+  <title>David & Suzy | Wedding Celebration</title>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            blush: '#F9E7E1',
-            petal: '#F3C8BE',
-            clay: '#B26860',
-            moss: '#354C40',
-            sand: '#FFFBF7',
+            blush: '#E4EBDC',
+            petal: '#8FAE8C',
+            clay: '#3F5D41',
+            moss: '#1F3324',
+            sand: '#F4F7F2',
+            bark: '#5C4632',
           },
           fontFamily: {
             display: ['Playfair Display', 'Georgia', 'Times New Roman', 'serif'],
             body: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
           },
           dropShadow: {
-            soft: '0 35px 60px rgba(178, 104, 96, 0.18)',
+            soft: '0 35px 60px rgba(31, 51, 36, 0.18)',
           },
         },
       },
@@ -33,10 +34,10 @@
   <style>
     body {
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background-image: radial-gradient(circle at 20% 20%, rgba(243, 200, 190, 0.18), transparent 45%),
-        radial-gradient(circle at 80% 0%, rgba(252, 237, 225, 0.5), transparent 46%),
-        radial-gradient(circle at 50% 100%, rgba(255, 240, 228, 0.4), transparent 50%);
-      background-color: #fffbf7;
+      background-image: radial-gradient(circle at 20% 20%, rgba(143, 174, 140, 0.2), transparent 45%),
+        radial-gradient(circle at 80% 0%, rgba(223, 234, 216, 0.6), transparent 46%),
+        radial-gradient(circle at 50% 100%, rgba(63, 93, 65, 0.15), transparent 50%);
+      background-color: #f4f7f2;
     }
     h1, h2, h3, h4 {
       font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -44,15 +45,15 @@
   </style>
 </head>
 <body class="text-stone-800">
-  <header class="relative isolate overflow-hidden rounded-b-[3rem] bg-gradient-to-br from-rose-900/70 via-clay/70 to-moss/70 text-white shadow-[0_40px_80px_-40px_rgba(51,35,30,0.65)]">
+  <header class="relative isolate overflow-hidden rounded-b-[3rem] bg-gradient-to-br from-moss/85 via-clay/75 to-bark/65 text-white shadow-[0_40px_80px_-40px_rgba(51,35,30,0.65)]">
     <div class="absolute inset-0 -z-20">
-      <img src="https://images.pexels.com/photos/2959196/pexels-photo-2959196.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Wedding ceremony" class="h-full w-full object-cover" />
+      <img src="./nerds.jpg" alt="Proposal" class="h-full w-full object-cover" />
     </div>
-    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-rose-950/80 via-clay/75 to-moss/70"></div>
+    <div class="absolute inset-0 -z-10 bg-gradient-to-br from-moss/85 via-clay/75 to-bark/60"></div>
     <div class="pointer-events-none absolute -left-32 top-10 -z-10 h-80 w-80 rounded-full bg-petal/30 blur-3xl"></div>
-    <div class="pointer-events-none absolute right-[-6rem] bottom-[-6rem] -z-10 h-96 w-96 rounded-full bg-blush/30 blur-[120px]"></div>
+    <div class="pointer-events-none absolute right-[-6rem] bottom-[-6rem] -z-10 h-96 w-96 rounded-full bg-bark/25 blur-[120px]"></div>
 
-    <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 pt-10 text-xs uppercase tracking-[0.35em] text-stone-200/80 sm:text-sm">
+    <!-- <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 pt-10 text-xs uppercase tracking-[0.35em] text-stone-200/80 sm:text-sm">
       <div class="flex items-center gap-3">
         <span class="inline-flex h-2 w-2 rounded-full bg-petal"></span>
         <span class="font-semibold">Alex &amp; Jordan</span>
@@ -63,39 +64,39 @@
         <a href="#qna" class="transition hover:text-white">Q &amp; A</a>
         <a href="#rsvp" class="transition hover:text-white">RSVP</a>
       </div>
-    </nav>
+    </nav> -->
 
     <div class="mx-auto flex min-h-[80vh] max-w-5xl flex-col items-center justify-center px-6 pb-28 pt-16 text-center">
-      <span class="inline-flex items-center gap-3 rounded-full bg-white/10 px-6 py-2 text-xs uppercase tracking-[0.45em] text-stone-100 shadow-inner shadow-rose-950/10">
+      <span class="inline-flex items-center gap-3 rounded-full bg-white/10 px-6 py-2 text-xs uppercase tracking-[0.45em] text-stone-100 shadow-inner shadow-moss/25">
         Save the Date
       </span>
       <h1 class="mt-10 max-w-3xl text-5xl font-semibold leading-tight drop-shadow-[0_12px_40px_rgba(0,0,0,0.25)] sm:text-6xl">
-        Alex Morgan &amp; Jordan Lee are tying the knot in Asheville
+        David &amp; Suzy <br />got married
       </h1>
       <p class="mt-8 max-w-2xl text-lg text-stone-100/90 sm:text-xl">
-        Join us for a weekend of mountain air, candlelight, and the people we love most. We can't wait to toast with you.
+        Join us for a night of food and drinks to celebrate.
       </p>
 
       <div class="mt-12 grid w-full gap-4 sm:grid-cols-3">
         <div class="rounded-2xl border border-white/40 bg-white/10 px-6 py-5 backdrop-blur-sm">
           <p class="text-[0.7rem] uppercase tracking-[0.35em] text-stone-200/80">Date</p>
-          <p class="mt-3 text-lg font-semibold">September 14, 2025</p>
-          <p class="text-sm text-stone-100/80">Saturday at 4:00 PM</p>
+          <p class="mt-3 text-lg font-semibold">December 20, 2025</p>
+          <p class="text-sm text-stone-100/80">Saturday at 5:00 PM</p>
         </div>
         <div class="rounded-2xl border border-white/40 bg-white/10 px-6 py-5 backdrop-blur-sm">
           <p class="text-[0.7rem] uppercase tracking-[0.35em] text-stone-200/80">Venue</p>
-          <p class="mt-3 text-lg font-semibold">The Willow Garden</p>
-          <p class="text-sm text-stone-100/80">122 Meadow Lane, Asheville</p>
+          <p class="mt-3 text-lg font-semibold">L'Abattoir</p>
+          <p class="text-sm text-stone-100/80">217 Carrall St, Vancouver</p>
         </div>
         <div class="rounded-2xl border border-white/40 bg-white/10 px-6 py-5 backdrop-blur-sm">
           <p class="text-[0.7rem] uppercase tracking-[0.35em] text-stone-200/80">Dress</p>
           <p class="mt-3 text-lg font-semibold">Garden Formal</p>
-          <p class="text-sm text-stone-100/80">Light layers, celebratory hues</p>
+          <p class="text-sm text-stone-100/80">Dress nice, or don't. We don't care</p>
         </div>
       </div>
 
       <div class="mt-14 flex flex-wrap items-center justify-center gap-4">
-        <a href="#rsvp" class="rounded-full bg-white px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-stone-900 shadow-lg shadow-rose-950/20 transition hover:bg-petal hover:text-rose-950">
+        <a href="#rsvp" class="rounded-full bg-white px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-stone-900 shadow-lg shadow-moss/30 transition hover:bg-petal hover:text-moss">
           RSVP / Contact Us
         </a>
         <a href="#details" class="rounded-full border border-white/50 px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/10">
@@ -118,18 +119,18 @@
             </p>
           </div>
           <ul class="flex-1 space-y-6">
-            <li class="relative overflow-hidden rounded-3xl border border-stone-100 bg-gradient-to-br from-blush via-white to-white p-7 shadow-sm">
-              <span class="absolute right-6 top-6 text-xs uppercase tracking-[0.35em] text-clay/70">Friday</span>
+            <li class="relative overflow-hidden rounded-3xl border border-stone-100 bg-gradient-to-br from-sage via-white to-white p-7 shadow-sm">
+              <span class="absolute right-6 top-6 text-xs uppercase tracking-[0.35em] text-bark/70">Friday</span>
               <h3 class="text-lg font-semibold text-stone-900">Welcome Gathering</h3>
               <p class="mt-2 text-sm text-stone-600">Ease into the weekend with sunset sips at The Overlook Patio, 7:00 PM. Casual dress, fuzzy blankets provided.</p>
             </li>
-            <li class="relative overflow-hidden rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sand to-blush/40 p-7 shadow-sm">
-              <span class="absolute right-6 top-6 text-xs uppercase tracking-[0.35em] text-clay/70">Saturday</span>
+            <li class="relative overflow-hidden rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sand to-sage/40 p-7 shadow-sm">
+              <span class="absolute right-6 top-6 text-xs uppercase tracking-[0.35em] text-bark/70">Saturday</span>
               <h3 class="text-lg font-semibold text-stone-900">Ceremony &amp; Celebration</h3>
               <p class="mt-2 text-sm text-stone-600">Arrive by 3:30 PM to settle in before the vows at 4:00 PM. Dinner, live music, and nightcaps to follow.</p>
             </li>
-            <li class="relative overflow-hidden rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-blush/30 to-sand p-7 shadow-sm">
-              <span class="absolute right-6 top-6 text-xs uppercase tracking-[0.35em] text-clay/70">Sunday</span>
+            <li class="relative overflow-hidden rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sage/30 to-sand p-7 shadow-sm">
+              <span class="absolute right-6 top-6 text-xs uppercase tracking-[0.35em] text-bark/70">Sunday</span>
               <h3 class="text-lg font-semibold text-stone-900">Farewell Brunch</h3>
               <p class="mt-2 text-sm text-stone-600">Drop in 9:00-11:00 AM at The Greenhouse for coffee, pastries, and a sweet goodbye before travels home.</p>
             </li>
@@ -138,7 +139,7 @@
       </div>
     </section>
 
-    <section class="relative mt-24 bg-gradient-to-br from-white via-blush/20 to-sand" id="travel">
+    <section class="relative mt-24 bg-gradient-to-br from-white via-sage/20 to-sand" id="travel">
       <div class="absolute inset-x-0 -top-20 h-20 bg-gradient-to-b from-transparent via-white/60 to-transparent"></div>
       <div class="mx-auto max-w-5xl px-6 py-24 sm:px-10">
         <div class="rounded-[2.5rem] border border-white/70 bg-white/90 p-10 shadow-xl">
@@ -151,19 +152,19 @@
               </p>
             </div>
             <dl class="flex-1 grid gap-8 sm:grid-cols-2">
-              <div class="rounded-3xl border border-blush/60 bg-blush/30 p-6">
+              <div class="rounded-3xl border border-petal/50 bg-petal/20 p-6">
                 <dt class="text-sm font-semibold uppercase tracking-[0.3em] text-clay">Hotel Block</dt>
                 <dd class="mt-2 text-sm text-stone-700">Reserve under "Morgan-Lee Wedding" at The Willow Garden Inn by August 1 for our preferred rate.</dd>
               </div>
-              <div class="rounded-3xl border border-blush/60 bg-blush/30 p-6">
+              <div class="rounded-3xl border border-petal/50 bg-petal/20 p-6">
                 <dt class="text-sm font-semibold uppercase tracking-[0.3em] text-clay">Transportation</dt>
                 <dd class="mt-2 text-sm text-stone-700">Uber &amp; Lyft run regularly. A shuttle leaves the inn at 3:00 PM and returns every hour until midnight.</dd>
               </div>
-              <div class="rounded-3xl border border-blush/60 bg-blush/30 p-6">
+              <div class="rounded-3xl border border-petal/50 bg-petal/20 p-6">
                 <dt class="text-sm font-semibold uppercase tracking-[0.3em] text-clay">Outdoor Comfort</dt>
                 <dd class="mt-2 text-sm text-stone-700">Evenings cool off. Bring a wrap or light jacket if you'll be lingering on the terrace stargazing.</dd>
               </div>
-              <div class="rounded-3xl border border-blush/60 bg-blush/30 p-6">
+              <div class="rounded-3xl border border-petal/50 bg-petal/20 p-6">
                 <dt class="text-sm font-semibold uppercase tracking-[0.3em] text-clay">Registry</dt>
                 <dd class="mt-2 text-sm text-stone-700">Your presence is the gift. For those asking, we're registered at Blueprint and have a honeymoon fund.</dd>
               </div>
@@ -173,7 +174,7 @@
       </div>
     </section>
 
-    <section class="relative bg-gradient-to-br from-rose-50 via-sand to-white" id="qna">
+    <section class="relative bg-gradient-to-br from-sage/40 via-sand to-white" id="qna">
       <div class="absolute inset-x-0 -top-24 h-24 bg-gradient-to-b from-transparent via-white/40 to-transparent"></div>
       <div class="mx-auto max-w-5xl px-6 py-24 sm:px-10">
         <div class="rounded-[2.5rem] border border-white/70 bg-white/85 p-10 shadow-xl">
@@ -183,19 +184,19 @@
             <p class="mt-4 text-base text-stone-600">If there's something we missed, please reach out; we're here to help you plan the perfect trip.</p>
           </div>
           <div class="mt-12 grid gap-8 lg:grid-cols-2">
-            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-blush/25 to-white p-6">
+            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sage/25 to-white p-6">
               <h3 class="text-lg font-semibold text-stone-900">Can I bring a guest?</h3>
               <p class="mt-3 text-sm text-stone-600">We would love to celebrate with everyone, but due to space we can only accommodate those listed on your invitation.</p>
             </article>
-            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-blush/25 to-white p-6">
+            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sage/25 to-white p-6">
               <h3 class="text-lg font-semibold text-stone-900">What should I wear?</h3>
               <p class="mt-3 text-sm text-stone-600">Garden formal: cocktail dresses, dressy jumpsuits, and suits. We'll be outdoors for the ceremony, so stylish flats or block heels recommended.</p>
             </article>
-            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-blush/25 to-white p-6">
+            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sage/25 to-white p-6">
               <h3 class="text-lg font-semibold text-stone-900">Are kids welcome?</h3>
               <p class="mt-3 text-sm text-stone-600">We adore your families, but the ceremony &amp; reception are adults-only. Nursing infants are welcome; please let us know so we can plan accordingly.</p>
             </article>
-            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-blush/25 to-white p-6">
+            <article class="rounded-3xl border border-stone-100 bg-gradient-to-br from-white via-sage/25 to-white p-6">
               <h3 class="text-lg font-semibold text-stone-900">Will there be parking?</h3>
               <p class="mt-3 text-sm text-stone-600">Complimentary parking is available at the inn. If you're staying off-site, the shuttle stops at the main downtown hotels.</p>
             </article>
@@ -204,17 +205,17 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden rounded-t-[3rem] bg-gradient-to-br from-rose-900 via-clay to-moss text-white" id="rsvp">
+    <section class="relative overflow-hidden rounded-t-[3rem] bg-gradient-to-br from-moss via-bark to-clay text-white" id="rsvp">
       <div class="pointer-events-none absolute -left-24 top-8 h-64 w-64 rounded-full bg-petal/30 blur-3xl"></div>
-      <div class="pointer-events-none absolute right-[-10%] bottom-[-10%] h-80 w-80 rounded-full bg-blush/30 blur-[110px]"></div>
+      <div class="pointer-events-none absolute right-[-10%] bottom-[-10%] h-80 w-80 rounded-full bg-bark/25 blur-[110px]"></div>
       <div class="mx-auto max-w-4xl px-6 py-20 text-center sm:px-10">
         <h2 class="text-3xl font-semibold sm:text-4xl">We can't wait to celebrate with you</h2>
         <p class="mt-4 text-base text-white/85">Please RSVP by August 1 so we can save you a seat and a slice of cake. If your plans change, give us a shout; we're flexible.</p>
         <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a href="mailto:alexandjordan@wedding.com" class="rounded-full bg-white px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-stone-900 shadow-lg shadow-rose-950/25 transition hover:bg-petal">
+          <a href="mailto:david.dahlgren92@gmail.com" class="rounded-full bg-white px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-stone-900 shadow-lg shadow-moss/35 transition hover:bg-petal">
             Email Your RSVP
           </a>
-          <a href="tel:+18285551234" class="rounded-full border border-white/60 px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/10">
+          <a href="tel:+5105414751" class="rounded-full border border-white/60 px-9 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-white/10">
             Call or Text
           </a>
         </div>
