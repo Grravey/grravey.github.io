@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David & Suzy | Supper in the Glasshouse</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lagoon: '#0C3A47',
+            drift: '#1F5664',
+            pine: '#2F6B57',
+            teal: '#4C8B7A',
+            mist: '#E7F4F3',
+            cloud: '#F7FBFB',
+          },
+          fontFamily: {
+            sans: ['Work Sans', 'Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-cloud text-lagoon font-sans">
+  <main class="mx-auto flex max-w-4xl flex-col gap-12 px-4 py-12 sm:px-6 sm:py-16">
+    <section class="rounded-[2.5rem] border border-teal/40 bg-white/80 p-8 shadow-sm sm:p-12">
+      <div class="space-y-6 text-center">
+        <span class="inline-flex items-center justify-center gap-2 rounded-full bg-teal/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-teal">Dinner invitation</span>
+        <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Supper in the Glasshouse</h1>
+        <p class="mx-auto max-w-2xl text-base leading-relaxed text-lagoon/80">
+          David and Suzy were married quietly and now want to celebrate with the people they love most. Join us for an evening with forest light, good food, and the conversations that remind us why we are family.
+        </p>
+        <div class="flex flex-col gap-3 text-sm text-lagoon/75 sm:flex-row sm:flex-wrap sm:justify-center">
+          <span class="rounded-full border border-teal/40 px-5 py-2">Saturday, October 12, 2025</span>
+          <span class="rounded-full border border-teal/40 px-5 py-2">Arrive 5:30 PM &middot; Dinner 6:30 PM</span>
+          <span class="rounded-full border border-teal/40 px-5 py-2">Evergreen Conservatory · Vancouver</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid gap-4 sm:grid-cols-3">
+      <figure class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
+        <img src="../IMG_3936-edits.jpg" alt="David and Suzy smiling" class="h-full w-full object-cover" />
+      </figure>
+      <figure class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
+        <img src="../IMG_3927.jpg" alt="David and Suzy walking together" class="h-full w-full object-cover" />
+      </figure>
+      <figure class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
+        <img src="../nerds.jpg" alt="Milkshake cheers" class="h-full w-full object-cover" />
+      </figure>
+    </section>
+
+    <section class="rounded-[2.5rem] bg-white/80 p-8 shadow-sm sm:p-12">
+      <div class="space-y-8">
+        <article class="space-y-3">
+          <h2 class="font-serif text-2xl text-lagoon">Venue</h2>
+          <p class="text-sm uppercase tracking-[0.3em] text-teal/80">The Greenhouse Room</p>
+          <p class="text-base leading-relaxed text-lagoon/80">
+            578 Cambie Street, Vancouver. Enter through the conservatory gates and follow the candles. There is underground parking, and the SkyTrain stop is a short walk away.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <h2 class="font-serif text-2xl text-lagoon">Dress code</h2>
+          <p class="text-sm uppercase tracking-[0.3em] text-teal/80">Forest and sea tones</p>
+          <p class="text-base leading-relaxed text-lagoon/80">
+            Dress in shades of deep green, teal, or soft blue. We will step outside for a toast, so bring a layer for the evening air.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="rsvp" class="rounded-[2.5rem] border border-teal/40 bg-lagoon text-cloud p-7 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-10 sm:p-10">
+      <div class="space-y-3">
+        <h2 class="font-serif text-2xl">RSVP</h2>
+        <p class="text-sm uppercase tracking-[0.3em] text-mist">Please reply by September 10</p>
+        <p class="text-base leading-relaxed text-cloud/90">Tell us who is coming, dietary notes, and the song you want to hear during dinner.</p>
+      </div>
+      <div class="mt-5 flex flex-col gap-3 text-sm sm:mt-0 sm:w-56">
+        <a href="mailto:davidandsuzydinner@gmail.com?subject=RSVP" class="inline-flex items-center justify-center rounded-full bg-cloud px-5 py-3 font-medium text-lagoon transition hover:bg-mist">Email RSVP</a>
+        <a href="https://forms.gle/placeholder" class="inline-flex items-center justify-center rounded-full border border-cloud/80 px-5 py-3 font-medium text-cloud transition hover:bg-cloud/10">RSVP form</a>
+      </div>
+    </section>
+
+    <section id="qna" class="grid gap-4 sm:grid-cols-2">
+      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-teal">Can I bring my kids?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">We are keeping the dinner adults-only so we can catch up properly. Nursing infants are welcome with a quick note.</p>
+      </article>
+      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-teal">What is on the menu?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">Forest-inspired courses: local greens, cedar-smoked salmon, hearty grains, and a citrus olive oil cake.</p>
+      </article>
+      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-teal">Do you have a registry?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">No registry needed. A small card basket and honeymoon coffee jar will be near the entrance.</p>
+      </article>
+      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-teal">Where should we stay?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">We reserved rooms at the Fairview Loft Hotel and Gardenline B&amp;B. Mention the Dahlgren celebration for preferred rates.</p>
+      </article>
+    </section>
+
+    <footer class="rounded-3xl border border-teal/40 bg-white/80 p-6 text-center text-sm text-lagoon/70 shadow-sm">
+      <p>Need anything? Text David at <a href="tel:+17785551234" class="font-medium text-teal">(778) 555-1234</a> or Suzy at <a href="tel:+17785554321" class="font-medium text-teal">(778) 555-4321</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>

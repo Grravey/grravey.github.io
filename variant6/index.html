@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David & Suzy | Garden Dinner Invitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canopy: '#102B22',
+            leaf: '#1E4733',
+            moss: '#3F6F50',
+            herb: '#6F8F73',
+            mist: '#EDF3ED',
+            clay: '#E9DFD6',
+          },
+          fontFamily: {
+            sans: ['Work Sans', 'Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-mist text-canopy font-sans">
+  <main class="mx-auto flex max-w-4xl flex-col gap-12 px-4 py-12 sm:px-6 sm:py-16">
+    <section class="overflow-hidden rounded-[2.75rem] border border-herb/50 bg-white/80 p-8 shadow-sm sm:p-12">
+      <div class="flex flex-col gap-8 sm:flex-row sm:items-start">
+        <div class="flex-1 space-y-5">
+          <span class="inline-flex items-center gap-2 rounded-full bg-herb/15 px-4 py-1 text-xs uppercase tracking-[0.4em] text-herb">Dinner invitation</span>
+          <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Garden Dinner for David &amp; Suzy</h1>
+          <p class="text-base leading-relaxed text-canopy/80">
+            We exchanged vows beneath a cedar canopy. Now we would love to share a table with you. Expect a night that moves from soft daylight to flickering candlelight.
+          </p>
+          <div class="grid gap-4 text-sm text-canopy/80 sm:grid-cols-3">
+            <div class="rounded-2xl border border-herb/50 bg-mist/50 p-4">
+              <p class="uppercase tracking-[0.3em] text-herb/90">Date</p>
+              <p class="mt-2 font-medium">Sat, Oct 12, 2025</p>
+            </div>
+            <div class="rounded-2xl border border-herb/50 bg-mist/50 p-4">
+              <p class="uppercase tracking-[0.3em] text-herb/90">Time</p>
+              <p class="mt-2 font-medium">Gather 5:30 PM · Dinner 6:30 PM</p>
+            </div>
+            <div class="rounded-2xl border border-herb/50 bg-mist/50 p-4">
+              <p class="uppercase tracking-[0.3em] text-herb/90">Place</p>
+              <p class="mt-2 font-medium">Evergreen Conservatory</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 space-y-3">
+          <figure class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
+            <img src="../IMG_3927.jpg" alt="David and Suzy laughing outdoors" class="h-full w-full object-cover" />
+          </figure>
+          <div class="grid grid-cols-2 gap-3">
+            <figure class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
+              <img src="../nerds.jpg" alt="Milkshake celebration" class="h-full w-full object-cover" />
+            </figure>
+            <figure class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
+              <img src="../IMG_0671.jpg" alt="Walk through the park" class="h-full w-full object-cover" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="rounded-[2.5rem] bg-white/85 p-8 shadow-sm sm:p-10">
+      <div class="space-y-8">
+        <article class="space-y-3">
+          <h2 class="font-serif text-2xl text-canopy">Venue notes</h2>
+          <p class="text-sm uppercase tracking-[0.3em] text-herb/80">Evergreen Conservatory</p>
+          <p class="text-base leading-relaxed text-canopy/80">
+            Enter from Cambie Street and follow the lanterns to The Greenhouse Room. There is underground parking, and the SkyTrain station is a block away.
+          </p>
+        </article>
+        <article class="space-y-3">
+          <h2 class="font-serif text-2xl text-canopy">Dress code</h2>
+          <p class="text-sm uppercase tracking-[0.3em] text-herb/80">Soft forest tones</p>
+          <p class="text-base leading-relaxed text-canopy/80">
+            Wear what makes you feel confident in the forest: dark greens, warm neutrals, and textures like velvet or linen. Bring a light layer for the garden toast.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="rsvp" class="rounded-[2.5rem] border border-herb/40 bg-canopy text-mist p-7 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-10 sm:p-10">
+      <div class="space-y-3">
+        <h2 class="font-serif text-2xl">RSVP</h2>
+        <p class="text-sm uppercase tracking-[0.3em] text-herb">Please reply by September 10</p>
+        <p class="text-base leading-relaxed text-mist/90">Let us know your guests, dietary needs, and a song request. We will confirm back quickly.</p>
+      </div>
+      <div class="mt-5 flex flex-col gap-3 text-sm sm:mt-0 sm:w-56">
+        <a href="mailto:davidandsuzydinner@gmail.com?subject=RSVP" class="inline-flex items-center justify-center rounded-full bg-mist px-5 py-3 font-medium text-canopy transition hover:bg-clay">Email RSVP</a>
+        <a href="https://forms.gle/placeholder" class="inline-flex items-center justify-center rounded-full border border-mist/80 px-5 py-3 font-medium text-mist transition hover:bg-mist/10">RSVP form</a>
+      </div>
+    </section>
+
+    <section id="qna" class="grid gap-4 sm:grid-cols-2">
+      <article class="rounded-3xl border border-herb/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-herb">Can we bring kids?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-canopy/80">We are keeping the evening adults-only so conversations can flow. Nursing infants are welcome&mdash;let us know so we can make space.</p>
+      </article>
+      <article class="rounded-3xl border border-herb/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-herb">What is on the menu?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-canopy/80">Seasonal dishes with forest herbs, cedar-smoked salmon, roasted root vegetables, and a late-night dessert bar.</p>
+      </article>
+      <article class="rounded-3xl border border-herb/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-herb">Gifts or registry?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-canopy/80">No gifts needed. For those who insist, we will have a card basket and a honeymoon coffee fund.</p>
+      </article>
+      <article class="rounded-3xl border border-herb/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-herb">Where to stay?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-canopy/80">Rooms are reserved at the Fairview Loft Hotel and Gardenline B&amp;B. Mention the Dahlgren dinner to access the block.</p>
+      </article>
+    </section>
+
+    <footer class="rounded-3xl border border-herb/40 bg-white/70 p-6 text-center text-sm text-canopy/70 shadow-sm">
+      <p>Need anything? Text David at <a href="tel:+17785551234" class="font-medium text-herb">(778) 555-1234</a> or Suzy at <a href="tel:+17785554321" class="font-medium text-herb">(778) 555-4321</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>

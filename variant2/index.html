@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David & Suzy | Dinner Party Celebration</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            canopy: '#0B3D2E',
+            grove: '#185C3E',
+            moss: '#2F6F4F',
+            fern: '#5B8A68',
+            sage: '#DDE8DD',
+            bark: '#3C2F2F',
+          },
+          fontFamily: {
+            sans: ['Work Sans', 'Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-sage text-canopy font-sans">
+  <main class="px-4 py-12 sm:px-8">
+    <div class="mx-auto flex max-w-4xl flex-col gap-16 rounded-3xl bg-white/70 p-8 shadow-sm sm:p-12">
+      <header class="space-y-6 text-center">
+        <p class="text-sm uppercase tracking-[0.35em] text-fern/80">We tied the knot</p>
+        <h1 class="font-serif text-4xl font-medium text-canopy sm:text-5xl">Dinner with David &amp; Suzy</h1>
+        <p class="mx-auto max-w-2xl text-base leading-relaxed text-canopy/80">
+          We got married&mdash;quietly and joyfully. Now we would love to gather the people we adore for a relaxed dinner party. Come share stories, raise a glass, and let us celebrate together.
+        </p>
+        <div class="flex flex-col gap-3 text-sm text-canopy/70 sm:flex-row sm:items-center sm:justify-center">
+          <span class="rounded-full border border-fern/50 px-4 py-2 font-medium">Saturday | October 12, 2025</span>
+          <span class="rounded-full border border-fern/50 px-4 py-2 font-medium">Doors 5:30 PM | Dinner 6:30 PM</span>
+          <span class="rounded-full border border-fern/50 px-4 py-2 font-medium">Vancouver, BC</span>
+        </div>
+      </header>
+
+      <section class="flex flex-col gap-6 text-sm text-canopy/80 sm:flex-row sm:gap-8" aria-labelledby="snapshots-heading">
+        <div class="sm:w-1/2">
+          <h2 id="snapshots-heading" class="font-serif text-xl text-canopy">A few snapshots</h2>
+          <p class="mt-3 leading-relaxed">Three little moments from the past year&mdash;because we promised no dramatic hero banners. Just the two of us, grinning like goofs.</p>
+        </div>
+        <div class="grid gap-4 sm:w-1/2 sm:grid-cols-3">
+          <figure class="overflow-hidden rounded-xl border border-fern/30 bg-sage">
+            <img src="../nerds.jpg" alt="David and Suzy laughing over milkshakes" class="h-full w-full object-cover" />
+          </figure>
+          <figure class="overflow-hidden rounded-xl border border-fern/30 bg-sage">
+            <img src="../IMG_0671.jpg" alt="Candid of David and Suzy during a walk in the park" class="h-full w-full object-cover" />
+          </figure>
+          <figure class="overflow-hidden rounded-xl border border-fern/30 bg-sage">
+            <img src="../IMG_3936-edits.jpg" alt="Suzy leaning on David while they enjoy the view" class="h-full w-full object-cover" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="grid gap-10 sm:grid-cols-2" aria-labelledby="details-heading">
+        <div class="space-y-3">
+          <h2 id="details-heading" class="font-serif text-xl text-canopy">Venue</h2>
+          <p class="text-sm uppercase tracking-[0.3em] text-fern/70">Where to arrive</p>
+          <p class="leading-relaxed text-canopy/80">
+            The dinner is at <span class="font-medium text-fern">The Greenhouse Room</span> inside the Evergreen Conservatory. We will have long communal tables, candlelight, and a playlist of songs you can sing along to.
+          </p>
+          <p class="text-canopy/60">578 Cambie Street | Vancouver | Paid parking underground | SkyTrain stop a block away</p>
+        </div>
+        <div class="space-y-3">
+          <h2 class="font-serif text-xl text-canopy">Dress code</h2>
+          <p class="text-sm uppercase tracking-[0.3em] text-fern/70">Come comfortable, come polished</p>
+          <p class="leading-relaxed text-canopy/80">
+            Think forest cocktail: soft textures, warm neutrals, a pop of moss or copper if you like. We will step outside for a quick toast, so bring a layer you will be happy wearing in the evening air.
+          </p>
+        </div>
+      </section>
+
+      <section class="rounded-2xl border border-fern/40 bg-sage/40 p-6 sm:p-8" id="rsvp" aria-labelledby="rsvp-heading">
+        <div class="space-y-4">
+          <h2 id="rsvp-heading" class="font-serif text-xl text-canopy">RSVP</h2>
+          <p class="leading-relaxed text-canopy/80">
+            Kindly let us know by <span class="font-medium text-fern">September 10</span>. Tell us who is coming, any dietary notes, and what song you will insist we play.
+          </p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a href="mailto:davidandsuzydinner@gmail.com?subject=RSVP" class="inline-flex items-center justify-center rounded-full bg-grove px-5 py-3 text-sm font-medium text-white transition hover:bg-moss">Email your RSVP</a>
+            <a href="https://forms.gle/placeholder" class="inline-flex items-center justify-center rounded-full border border-grove px-5 py-3 text-sm font-medium text-grove transition hover:bg-grove/10">Fill out the RSVP form</a>
+          </div>
+          <p class="text-xs text-canopy/60">Need a plus-one or plans changed? Send us a note and we will make it work.</p>
+        </div>
+      </section>
+
+      <section class="space-y-6" id="qna" aria-labelledby="qna-heading">
+        <div class="space-y-2 text-center">
+          <h2 id="qna-heading" class="font-serif text-xl text-canopy">Questions and answers</h2>
+          <p class="text-sm text-canopy/70">A few things friends have already asked.</p>
+        </div>
+        <dl class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-fern/30 bg-white/80 p-5">
+            <dt class="text-sm font-semibold text-grove">Can I bring my kids?</dt>
+            <dd class="mt-2 text-sm leading-relaxed text-canopy/80">We are keeping this dinner adults-only so we can all linger late. Nursing infants are welcome, just give us a heads-up.</dd>
+          </div>
+          <div class="rounded-2xl border border-fern/30 bg-white/80 p-5">
+            <dt class="text-sm font-semibold text-grove">What is on the menu?</dt>
+            <dd class="mt-2 text-sm leading-relaxed text-canopy/80">Family-style dishes inspired by the coast and the forest: cedar-smoked salmon, roasted roots, plenty of seasonal greens, and a surprise dessert.</dd>
+          </div>
+          <div class="rounded-2xl border border-fern/30 bg-white/80 p-5">
+            <dt class="text-sm font-semibold text-grove">Is there a registry?</dt>
+            <dd class="mt-2 text-sm leading-relaxed text-canopy/80">Your presence is all we want. If you insist, there will be a card basket and a honeymoon coffee fund.</dd>
+          </div>
+          <div class="rounded-2xl border border-fern/30 bg-white/80 p-5">
+            <dt class="text-sm font-semibold text-grove">Where should I stay?</dt>
+            <dd class="mt-2 text-sm leading-relaxed text-canopy/80">We have held a few rooms at the Fairview Loft Hotel nearby. Mention the Dahlgren party for a discount or reach out for other ideas.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <footer class="flex flex-col gap-3 border-t border-fern/20 pt-6 text-center text-sm text-canopy/60">
+        <p>We are counting the days. See you under the string lights.</p>
+        <p>Need anything? Text David at <a href="tel:+17785551234" class="font-medium text-grove">(778) 555-1234</a> or Suzy at <a href="tel:+17785554321" class="font-medium text-grove">(778) 555-4321</a>.</p>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
