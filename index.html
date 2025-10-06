@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>David & Suzy | Dinner @ L'Abattoir</title>
+  <title>David & Suzy | Choose Your Celebration</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -30,294 +30,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body class="bg-cloud text-lagoon font-sans">
-  <main class="mx-auto flex max-w-4xl flex-col gap-12 px-4 py-12 sm:px-6 sm:py-16">
-    <section class="rounded-[2.5rem] border border-teal/40 bg-white/80 p-8 shadow-sm sm:p-12">
-      <div class="space-y-6 text-center">
-        <span class="inline-flex items-center justify-center gap-2 rounded-full bg-teal/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-teal">Dinner invitation</span>
-        <h1 class="font-serif text-4xl font-semibold sm:text-5xl">David &amp; Suzy <br />got married</h1>
+  <main class="mx-auto flex min-h-screen max-w-4xl flex-col gap-12 px-4 py-16 sm:px-6 sm:py-20">
+    <header class="rounded-[2.5rem] border border-teal/40 bg-white/85 p-10 text-center shadow-sm sm:p-14">
+      <div class="space-y-6">
+        <span class="inline-flex items-center justify-center gap-2 rounded-full bg-teal/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-teal">We're Celebrating</span>
+        <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Which gathering will you join?</h1>
         <p class="mx-auto max-w-2xl text-base leading-relaxed text-lagoon/80">
-          David and Suzy were married quietly and now want to celebrate with the people they love most. Join us for an evening with good food and an open bar.
+          We tied the knot, then planned a few dinners with the people we love most. Pick the celebration that matches the invitation you received.
         </p>
-        <div class="flex flex-col gap-3 text-sm text-lagoon/75 sm:flex-row sm:flex-wrap sm:justify-center">
-          <span class="rounded-full border border-teal/40 px-5 py-2">Saturday, December 20, 2025</span>
-          <span class="rounded-full border border-teal/40 px-5 py-2">Drinks 5:00 PM &middot; Dinner 6:00 PM</span>
-          <span class="rounded-full border border-teal/40 px-5 py-2"><a href="https://www.labattoir.ca/">L'Abattoir</a> · Vancouver</span>
+      </div>
+    </header>
+
+    <section class="grid flex-1 place-items-center">
+      <div class="w-full max-w-xl space-y-6 rounded-[2rem] border border-teal/40 bg-white/80 p-8 shadow-sm sm:p-10">
+        <h2 class="font-serif text-2xl text-lagoon">Upcoming events</h2>
+        <p class="text-sm text-lagoon/70">Choose your dinner party below. We'll share details, RSVP info, and anything else you need.</p>
+        <div class="space-y-4">
+          <a href="./vancouver/" class="group flex items-center justify-between rounded-2xl border border-teal/40 bg-mist/80 px-6 py-5 transition hover:border-teal/60 hover:bg-mist">
+            <div>
+              <p class="text-sm uppercase tracking-[0.35em] text-teal/90">Vancouver</p>
+              <p class="mt-2 font-serif text-xl text-lagoon">Dinner @ L'Abattoir</p>
+              <p class="mt-1 text-sm text-lagoon/70">Saturday · December 20, 2025</p>
+            </div>
+            <span class="rounded-full border border-teal/40 bg-white/80 px-4 py-2 text-xs font-medium uppercase tracking-[0.3em] text-teal transition group-hover:bg-teal group-hover:text-white">View</span>
+          </a>
         </div>
+        <p class="text-xs text-lagoon/50">More cities coming soon. If your invitation mentions another location, sit tight &mdash; we will update this page when details are live.</p>
       </div>
     </section>
 
-    <section class="grid gap-4 sm:grid-cols-3">
-      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
-        <img src="./assets/big-tree.jpg" alt="David and Suzy smiling" class="h-full w-full object-cover" />
-      </figure>
-      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
-        <img src="./assets/forest.jpg" alt="David and Suzy walking together" class="h-full w-full object-cover" />
-      </figure>
-      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
-        <img src="./assets/proposal.jpg" alt="Milkshake cheers" class="h-full w-full object-cover" />
-      </figure>
-    </section>
-
-    <section class="rounded-[2.5rem] bg-white/80 p-8 shadow-sm sm:p-12">
-      <div class="space-y-8">
-        <article class="space-y-3">
-          <h2 class="font-serif text-2xl text-lagoon">Venue</h2>
-          <p class="text-sm uppercase tracking-[0.3em] text-teal/80">L'Abattoir</p>
-          <p class="text-base leading-relaxed text-lagoon/80">
-            217 Carrall St, Vancouver. <br />
-            <a href="https://www.labattoir.ca/">https://www.labattoir.ca/</a>
-          </p>
-        </article>
-        <article class="space-y-3">
-          <h2 class="font-serif text-2xl text-lagoon">Dress code</h2>
-          <p class="text-sm uppercase tracking-[0.3em] text-teal/80">Do your best</p>
-          <p class="text-base leading-relaxed text-lagoon/80">
-            Wear something nice, or don't. We're just happy to see you.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="rsvp" class="rounded-[2.5rem] border border-teal/40 bg-lagoon text-cloud p-7 shadow-sm sm:flex sm:items-center sm:justify-between sm:gap-10 sm:p-10">
-      <div class="space-y-3">
-        <h2 class="font-serif text-2xl">RSVP</h2>
-        <p class="text-sm uppercase tracking-[0.3em] text-mist">Please reply by Nov 5.</p>
-        <p class="text-base leading-relaxed text-cloud/90">Tell us who is coming and what you're eating.</p>
-      </div>
-      <div class="mt-5 flex flex-col gap-3 text-sm sm:mt-0 sm:w-56">
-        <a href="https://forms.gle/placeholder" class="inline-flex items-center justify-center rounded-full bg-cloud px-5 py-3 font-medium text-lagoon transition hover:bg-mist">RSVP form</a>
-      </div>
-    </section>
-
-   <section id="qna" class="grid gap-4 sm:grid-cols-2">
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">What is the plan?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">
-          <b>5 PM</b> - Arrival. Champagne (or whatever) with charcuterie and assorted canapés.<br />
-          <b>6 PM</b> - Dinner is served. Tables will be marked with seating cards. <br />
-          <b>After dinner</b> - Take advantage of the open bar. Nothing really planned after this point.
-        </p>
-      </article>
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">What's the parking situation?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">Street parking is available on either Water Street or W Cordova Street. <br />
-          A parking garage is located between Cambie Street and Abbott Street with entrances westbound on Water Street and eastbound on W Cordova Street.
-        </p>
-      </article>
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">Could you have picked a more inconvenient time/place?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">We tried, but it's hard booking large reservations on Christmas Day.</p>
-      </article>
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">What's on the menu?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">More information in the RSVP form. Please RSVP.</p>
-      </article>
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">Open bar?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">Hell yea.</p>
-      </article>
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">Do you have a registry?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">No registry. There will be a small box for cards next to the guestbook.</p>
-      </article>
-    </section>
-
-    <footer class="rounded-3xl border border-teal/40 bg-white/80 p-6 text-center text-sm text-lagoon/70 shadow-sm">
-      <p>Need anything? Text David at <a href="tel:+15104031367" class="font-medium text-teal">(510) 403-1367</a>.</p>
+    <footer class="pb-6 text-center text-xs uppercase tracking-[0.3em] text-lagoon/50">
+      <span>David &amp; Suzy · 2025</span>
     </footer>
   </main>
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-      const containers = Array.from(document.querySelectorAll('[data-cycle-gallery]'));
-      if (!containers.length) return;
-
-      const slots = containers
-        .map((container) => {
-          const img = container.querySelector('img');
-          if (!img) return null;
-
-          container.classList.add('relative');
-          img.style.transition = 'opacity 1200ms ease-in-out';
-          img.style.display = 'block';
-
-          const overlay = img.cloneNode(true);
-          overlay.style.position = 'absolute';
-          overlay.style.inset = '0';
-          overlay.style.opacity = '0';
-          overlay.style.transition = 'opacity 1200ms ease-in-out';
-          overlay.style.pointerEvents = 'none';
-          overlay.setAttribute('aria-hidden', 'true');
-          container.appendChild(overlay);
-
-          return { container, img, overlay, currentIndex: 0, transitioning: false };
-        })
-        .filter(Boolean);
-
-      if (!slots.length) return;
-
-      const loadImage = (img, src) =>
-        new Promise((resolve) => {
-          if (!src) {
-            resolve('');
-            return;
-          }
-
-          const done = () => {
-            img.removeEventListener('load', done);
-            img.removeEventListener('error', done);
-            resolve(src);
-          };
-
-          img.addEventListener('load', done, { once: true });
-          img.addEventListener('error', done, { once: true });
-
-          const current = img.getAttribute('src');
-          if (current === src && img.complete) {
-            done();
-          } else if (current !== src) {
-            img.setAttribute('src', src);
-            if (img.complete) done();
-          }
-        });
-
-      const preloadImage = (src) =>
-        new Promise((resolve) => {
-          const img = new Image();
-          img.onload = img.onerror = () => resolve(src);
-          img.src = src;
-        });
-
-      const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-      const assetSources = [
-        './assets/apple.jpg',
-        './assets/big-tree.jpg',
-        './assets/forest.jpg',
-        './assets/marina.jpg',
-        './assets/proposal.jpg',
-        './assets/redwood-cottage.jpg',
-        './assets/scuba.jpg',
-      ];
-
-      const initialSources = slots.map((slot) => slot.img.getAttribute('src') || '');
-      const sources = Array.from(new Set([...initialSources, ...assetSources]));
-      if (!sources.length) return;
-
-      const inUse = new Set();
-
-      const ensureUniqueInitial = () => {
-        const total = sources.length;
-        slots.forEach((slot, slotIndex) => {
-          let currentSrc = slot.img.getAttribute('src') || '';
-          let index = sources.indexOf(currentSrc);
-          if (index === -1) {
-            index = slotIndex % total;
-            currentSrc = sources[index];
-            slot.img.setAttribute('src', currentSrc);
-          }
-          if (inUse.has(index) && total > inUse.size) {
-            let steps = 0;
-            let nextIndex = index;
-            while (steps < total && inUse.has(nextIndex)) {
-              nextIndex = (nextIndex + 1) % total;
-              steps += 1;
-            }
-            index = nextIndex;
-            currentSrc = sources[index];
-            slot.img.setAttribute('src', currentSrc);
-          }
-          slot.currentIndex = index;
-          slot.overlay.setAttribute('src', currentSrc);
-          inUse.add(index);
-        });
-      };
-
-      ensureUniqueInitial();
-
-      if (sources.length <= slots.length) return;
-
-      await Promise.all(
-        slots.flatMap((slot) => [
-          loadImage(slot.img, slot.img.getAttribute('src') || ''),
-          loadImage(slot.overlay, slot.overlay.getAttribute('src') || ''),
-        ]),
-      );
-
-      const currentSources = slots.map((slot) => slot.img.getAttribute('src') || '');
-      const preloadSources = sources.filter((src) => !currentSources.includes(src));
-      await Promise.all(preloadSources.map(preloadImage));
-
-      const fadeDuration = 1200;
-      const baseInterval = 30000;
-      const offsetStep = 10000;
-      const reserved = new Set();
-
-      const findNextIndex = (currentIndex) => {
-        const total = sources.length;
-        for (let step = 1; step <= total; step += 1) {
-          const candidate = (currentIndex + step) % total;
-          if (!inUse.has(candidate) && !reserved.has(candidate)) {
-            return candidate;
-          }
-        }
-        return currentIndex;
-      };
-
-      const fadeOverlay = (slot, opacity) =>
-        new Promise((resolve) => {
-          requestAnimationFrame(() => {
-            slot.overlay.style.opacity = opacity;
-            resolve();
-          });
-        });
-
-      const advance = async (slot) => {
-        if (slot.transitioning) return;
-
-        const currentIndex = slot.currentIndex;
-        const nextIndex = findNextIndex(currentIndex);
-        if (nextIndex === currentIndex) return;
-
-        slot.transitioning = true;
-        reserved.add(nextIndex);
-        const nextSrc = sources[nextIndex];
-
-        try {
-          await loadImage(slot.overlay, nextSrc);
-          await fadeOverlay(slot, '1');
-          await sleep(fadeDuration);
-
-          await loadImage(slot.img, nextSrc);
-          if (typeof slot.img.decode === 'function') {
-            try {
-              await slot.img.decode();
-            } catch (_) {
-              // ignore decode errors
-            }
-          }
-
-          inUse.delete(currentIndex);
-          inUse.add(nextIndex);
-          slot.currentIndex = nextIndex;
-
-          await fadeOverlay(slot, '0');
-          await sleep(fadeDuration);
-        } finally {
-          reserved.delete(nextIndex);
-          slot.transitioning = false;
-        }
-      };
-
-      slots.forEach((slot, idx) => {
-        const offset = (idx + 1) * offsetStep;
-        setTimeout(() => {
-          advance(slot);
-          slot.timer = setInterval(() => advance(slot), baseInterval);
-        }, offset);
-      });
-    });
-  </script>
 </body>
 </html>
