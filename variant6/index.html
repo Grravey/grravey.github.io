@@ -55,14 +55,14 @@
           </div>
         </div>
         <div class="flex-1 space-y-3">
-          <figure class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
+          <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
             <img src="../IMG_3927.jpg" alt="David and Suzy laughing outdoors" class="h-full w-full object-cover" />
           </figure>
           <div class="grid grid-cols-2 gap-3">
-            <figure class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
+            <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
               <img src="../nerds.jpg" alt="Milkshake celebration" class="h-full w-full object-cover" />
             </figure>
-            <figure class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
+            <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-herb/40 bg-mist/70 shadow-sm">
               <img src="../IMG_0671.jpg" alt="Walk through the park" class="h-full w-full object-cover" />
             </figure>
           </div>
@@ -124,5 +124,112 @@
       <p>Need anything? Text David at <a href="tel:+17785551234" class="font-medium text-herb">(778) 555-1234</a> or Suzy at <a href="tel:+17785554321" class="font-medium text-herb">(778) 555-4321</a>.</p>
     </footer>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const containers = Array.from(document.querySelectorAll('[data-cycle-gallery]'));
+      if (!containers.length) return;
+
+      const displayImages = containers.map((container) => container.querySelector('img')).filter(Boolean);
+      if (!displayImages.length) return;
+
+      const assetNames = ['IMG_0671.jpg', 'IMG_3919.jpg', 'IMG_3926.jpg', 'IMG_3927.jpg', 'IMG_3936-edits.jpg', 'IMG_3936.jpg', 'nerds.jpg', 'image.png'];
+      const getName = (src) => (src || '').split('/').pop() || '';
+      const waitForImage = (img) => new Promise((resolve) => {
+        if (img.complete) {
+          resolve();
+        } else {
+          img.addEventListener('load', resolve, { once: true });
+          img.addEventListener('error', resolve, { once: true });
+        }
+      });
+
+      Promise.all(displayImages.map(waitForImage))
+        .then(() => {
+          const initialNames = displayImages.map((img) => getName(img.getAttribute('src')));
+          const uniqueNames = Array.from(new Set([...initialNames, ...assetNames]));
+          const preloadNames = uniqueNames.filter((name) => !initialNames.includes(name));
+          const preloadImage = (name) => new Promise((resolve) => {
+            const preload = new Image();
+            preload.onload = preload.onerror = () => resolve(name);
+            preload.src = `../${name}`;
+          });
+          return Promise.all(preloadNames.map(preloadImage)).then(() => ({ initialNames, uniqueNames }));
+        })
+        .then(({ initialNames, uniqueNames }) => {
+          const sources = uniqueNames.map((name) => `../${name}`);
+          if (!sources.length) return;
+
+          const slots = displayImages.map((img, index) => {
+            const container = img.closest('[data-cycle-gallery]');
+            if (!container) return null;
+
+            container.classList.add('relative');
+            img.style.transition = 'opacity 1200ms ease-in-out';
+
+            const overlay = img.cloneNode(true);
+            overlay.style.position = 'absolute';
+            overlay.style.inset = '0';
+            overlay.style.opacity = '0';
+            overlay.style.transition = 'opacity 1200ms ease-in-out';
+            overlay.style.pointerEvents = 'none';
+            overlay.setAttribute('aria-hidden', 'true');
+            container.appendChild(overlay);
+
+            const startName = initialNames[index] || initialNames[0] || uniqueNames[0];
+            let currentIndex = sources.findIndex((src) => getName(src) === startName);
+            if (currentIndex < 0) currentIndex = index % sources.length;
+
+            return { img, overlay, currentIndex };
+          }).filter(Boolean);
+
+          if (!slots.length) return;
+
+          const fadeDuration = 1200;
+          const interval = 10000;
+
+          const setOverlaySource = (slot, src, callback) => {
+            if (slot.overlay.getAttribute('src') === src) {
+              callback();
+              return;
+            }
+            const handler = () => {
+              slot.overlay.removeEventListener('load', handler);
+              slot.overlay.removeEventListener('error', handler);
+              callback();
+            };
+            slot.overlay.addEventListener('load', handler);
+            slot.overlay.addEventListener('error', handler);
+            slot.overlay.src = src;
+            if (slot.overlay.complete) {
+              handler();
+            }
+          };
+
+          const advance = (slot) => {
+            slot.currentIndex = (slot.currentIndex + 1) % sources.length;
+            const nextSrc = sources[slot.currentIndex];
+            setOverlaySource(slot, nextSrc, () => {
+              slot.overlay.style.opacity = '1';
+              slot.img.style.opacity = '0';
+              window.setTimeout(() => {
+                slot.img.src = nextSrc;
+                slot.img.style.opacity = '1';
+                slot.overlay.style.opacity = '0';
+              }, fadeDuration);
+            });
+          };
+
+          slots.forEach((slot, idx) => {
+            setTimeout(() => {
+              advance(slot);
+              setInterval(() => advance(slot), interval);
+            }, idx * interval);
+          });
+        })
+        .catch(() => {});
+    });
+  </script>
 </body>
 </html>

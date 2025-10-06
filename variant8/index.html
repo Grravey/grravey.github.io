@@ -40,8 +40,8 @@
         </p>
         <div class="flex flex-col gap-3 text-sm text-lagoon/75 sm:flex-row sm:flex-wrap sm:justify-center">
           <span class="rounded-full border border-teal/40 px-5 py-2">Saturday, December 20, 2025</span>
-          <span class="rounded-full border border-teal/40 px-5 py-2">Arrive 5:00 PM &middot; Dinner 6:00 PM</span>
-          <span class="rounded-full border border-teal/40 px-5 py-2">L'Abattoir · Vancouver</span>
+          <span class="rounded-full border border-teal/40 px-5 py-2">Drinks 5:00 PM &middot; Dinner 6:00 PM</span>
+          <span class="rounded-full border border-teal/40 px-5 py-2"><a href="https://www.labattoir.ca/">L'Abattoir</a> · Vancouver</span>
         </div>
       </div>
     </section>
@@ -64,7 +64,8 @@
           <h2 class="font-serif text-2xl text-lagoon">Venue</h2>
           <p class="text-sm uppercase tracking-[0.3em] text-teal/80">L'Abattoir</p>
           <p class="text-base leading-relaxed text-lagoon/80">
-            217 Carrall St, Vancouver.
+            217 Carrall St, Vancouver. <br />
+            <a href="https://www.labattoir.ca/">https://www.labattoir.ca/</a>
           </p>
         </article>
         <article class="space-y-3">
@@ -98,6 +99,12 @@
         </p>
       </article>
       <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
+        <h3 class="text-sm font-semibold text-teal">What's the parking situation?</h3>
+        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">Street parking is available on either Water Street or W Cordova Street. <br />
+          A parking garage is located between Cambie Street and Abbott Street with entrances westbound on Water Street and eastbound on W Cordova Street.
+        </p>
+      </article>
+      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
         <h3 class="text-sm font-semibold text-teal">Could you have picked a more inconvenient time/place?</h3>
         <p class="mt-2 text-sm leading-relaxed text-lagoon/80">We tried, but it's hard booking large reservations on Christmas Day.</p>
       </article>
@@ -111,11 +118,7 @@
       </article>
       <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
         <h3 class="text-sm font-semibold text-teal">Do you have a registry?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">No registry needed. A small card basket and honeymoon coffee jar will be near the entrance.</p>
-      </article>
-      <article class="rounded-3xl border border-teal/40 bg-white/85 p-6 shadow-sm">
-        <h3 class="text-sm font-semibold text-teal">Where should we stay?</h3>
-        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">We reserved rooms at the Fairview Loft Hotel and Gardenline B&amp;B. Mention the Dahlgren celebration for preferred rates.</p>
+        <p class="mt-2 text-sm leading-relaxed text-lagoon/80">No registry. There will be a small box for cards next to the guestbook.</p>
       </article>
     </section>
 
@@ -189,11 +192,13 @@
       const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
       const assetSources = [
+        './variant8/assets/apple.jpg',
         './variant8/assets/big-tree.jpg',
         './variant8/assets/forest.jpg',
         './variant8/assets/marina.jpg',
         './variant8/assets/proposal.jpg',
         './variant8/assets/redwood-cottage.jpg',
+        './variant8/assets/scuba.jpg',
       ];
 
       const initialSources = slots.map((slot) => slot.img.getAttribute('src') || '');
