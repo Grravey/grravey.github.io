@@ -37,7 +37,7 @@
         <span class="inline-flex items-center justify-center gap-2 rounded-full bg-teal/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-teal">RSVP</span>
         <h1 class="font-serif text-4xl font-semibold sm:text-5xl">Join us for dinner</h1>
         <p class="mx-auto max-w-2xl text-base leading-relaxed text-lagoon/80">
-          Tell us who is coming, share plus-one names, and pick your dinner courses. Once you enter your household code, this page customizes for your invitation.
+          Tell us who is coming, and what you want to eat.
         </p>
       </div>
     </header>
@@ -65,21 +65,23 @@
 
       const MENU_OPTIONS = {
         starter: [
-          { id: 'crab-tartine', label: "Dungeness crab tartine with citrus aioli" },
-          { id: 'beet-salad', label: "Roasted beet salad, chèvre, toasted hazelnut" },
-          { id: 'mushroom-bisque', label: "Wild mushroom bisque with truffle foam" },
+          { id: 'braised meatballs', label: "<b>Braised meatballs</b>, <em>pomodoro, grana padana, toasted sourdough</em>" },
+          { id: 'crab cake', label: "<b>Pan-fried crab and cod cake</b>, <em>curry aioli, herb salad</em>" },
+          { id: 'greens', label: "<b>Shaved vegetables</b>, <em>white balsamic vinaigrette, herb crumb</em>"}
         ],
         main: [
-          { id: 'sablefish', label: "Seared sablefish, miso glaze, charred leek" },
-          { id: 'short-rib', label: "Braised short rib, pommes purée, red wine jus" },
-          { id: 'gnocchi', label: "Ricotta gnocchi, brown butter, sage" },
-          { id: 'cauliflower', label: "Roasted cauliflower steak, romesco, pine nut" },
+          { id: 'tenderloin', label: "<b>AAA Canadian beef tenderloin</b>, <em>carrots, pomme purée, green peppercorn jus</em>" },
+          { id: 'salmon', label: "<b>BC spring salmon</b>, <em>beets, quinoa, charred lemon glaze</em>" },
+          { id: 'chicken', label: "<b>Fraser Valley chicken breast</b>, <em>spätzle, parsnips, natural jus</em" },
+          { id: 'vegetarion', label: "<b>Seasonal harvest<b>, <em>Potato rösti, seasonal vegetables, du Puy lentils</em>" }
         ],
         dessert: [
-          { id: 'ganache-torte', label: "Dark chocolate ganache torte, espresso cream" },
-          { id: 'lemon-cake', label: "Lemon olive oil cake, mascarpone, macerated berries" },
+          { id: 'lime curd', label: "<b>Lime curd</b>, <em>white chocolate chantilly, graham crumb, tonka bean</em>" },
+          { id: 'sticky toffee', label: "<b>Sticky toffee pudding</b>, <em>whipped crème fraîche</em>" },
         ],
       };
+
+      const HOST_CONTACT_HTML = `Text or call <span class="font-semibold">David</span> at <a href="tel:+15104031367" class="font-semibold text-teal hover:text-teal/80 focus:text-teal/80">(510) 403-1367</a>.`;
 
       const state = {
         code: '',
@@ -90,6 +92,68 @@
         submitStatus: 'idle',
         submitMessage: '',
         formError: '',
+        summary: null,
+      };
+
+      const submittingOverlay = document.createElement('div');
+      submittingOverlay.id = 'rsvp-submitting-overlay';
+      submittingOverlay.className = 'fixed inset-0 z-[60] hidden items-center justify-center bg-cloud/80 backdrop-blur-sm';
+      submittingOverlay.innerHTML = `
+        <div class="flex flex-col items-center gap-5 rounded-[2rem] border border-teal/50 bg-white/90 px-10 py-8 text-center shadow-lg">
+          <span class="relative inline-flex h-20 w-20 items-center justify-center">
+            <span class="absolute inset-0 animate-ping rounded-full bg-teal/40"></span>
+            <span class="relative inline-flex h-16 w-16 items-center justify-center rounded-full border-4 border-teal/30 bg-mist/90 text-3xl font-serif text-teal">✨</span>
+          </span>
+          <div class="space-y-2">
+            <p class="font-serif text-2xl text-lagoon">Sending your RSVP…</p>
+            <p class="text-sm text-lagoon/70">We’re sharing your answers with David &amp; Suzy. One moment!</p>
+          </div>
+        </div>
+      `;
+      body.appendChild(submittingOverlay);
+
+      const toggleSubmittingOverlay = (visible) => {
+        if (visible) {
+          submittingOverlay.classList.remove('hidden');
+          submittingOverlay.classList.add('flex');
+        } else {
+          submittingOverlay.classList.add('hidden');
+          submittingOverlay.classList.remove('flex');
+        }
+      };
+
+      const getMenuLabel = (category, id) => {
+        if (!id) return '';
+        const choices = MENU_OPTIONS[category] || [];
+        const match = choices.find((option) => option.id === id);
+        return match ? match.label : id;
+      };
+
+      const extractSubmittedAt = (rsvps) => {
+        if (!rsvps) return '';
+        for (const key of Object.keys(rsvps)) {
+          const entry = rsvps[key];
+          if (entry && entry.submittedAt) {
+            return entry.submittedAt;
+          }
+        }
+        return '';
+      };
+
+      const formatSubmittedAt = (value) => {
+        if (!value) return '';
+        try {
+          const date = new Date(value);
+          if (!Number.isNaN(date.getTime())) {
+            return date.toLocaleString(undefined, {
+              dateStyle: 'long',
+              timeStyle: 'short',
+            });
+          }
+        } catch {
+          // fall back to original string
+        }
+        return value;
       };
 
       const params = new URLSearchParams(window.location.search);
@@ -153,22 +217,25 @@
           loadError,
           names,
           people,
-          submitStatus,
-          submitMessage,
-          formError,
-        } = state;
+        submitStatus,
+        submitMessage,
+        formError,
+        summary,
+      } = state;
+
+        toggleSubmittingOverlay(submitStatus === 'submitting');
 
         if (!code) {
           container.innerHTML = `
             <form id="code-form" class="space-y-8">
               <header class="space-y-3 text-center">
-                <h2 class="font-serif text-2xl text-lagoon">Enter your household code</h2>
-                <p class="text-sm text-lagoon/70">Your invitation includes a short code. Use it to load the guests linked to your RSVP.</p>
+                <h2 class="font-serif text-2xl text-lagoon">Enter your RSVP code</h2>
+                <p class="text-sm text-lagoon/70">Your email invitation includes a short code. Please paste it in here to RSVP.</p>
               </header>
               ${loadError ? `<p class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">${escapeHtml(loadError)}</p>` : ''}
               <div class="space-y-2">
-                <label for="code-input" class="block text-sm font-medium text-lagoon/80">Household code</label>
-                <input id="code-input" name="code" type="text" required autocomplete="off" class="w-full rounded-2xl border border-teal/30 bg-white/90 px-4 py-3 text-base text-lagoon shadow-sm focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40" placeholder="e.g. sample-code-123" />
+                <label for="code-input" class="block text-sm font-medium text-lagoon/80">RSVP code</label>
+                <input id="code-input" name="code" type="text" required autocomplete="off" class="w-full rounded-2xl border border-teal/30 bg-white/90 px-4 py-3 text-base text-lagoon shadow-sm focus:border-teal focus:outline-none focus:ring-2 focus:ring-teal/40" placeholder="e.g. my-rsvp-code" />
               </div>
               <button type="submit" class="inline-flex w-full items-center justify-center rounded-full bg-teal px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-teal/90 focus:outline-none focus:ring-2 focus:ring-teal/40">Find my invitation</button>
             </form>
@@ -212,7 +279,8 @@
             <div class="space-y-6 text-center">
               <div class="space-y-3">
                 <h2 class="font-serif text-2xl text-lagoon">We couldn't find that code</h2>
-                <p class="text-sm text-lagoon/70">${escapeHtml(loadError || 'Double-check the spelling on your invitation and try again.')}</p>
+                <p class="text-sm text-lagoon/70">${escapeHtml(
+                    (loadError === 'Authorization code not recognized' || !loadError) ? 'Double-check the spelling on your invitation and try again.' : loadError)}</p>
               </div>
               <div class="flex flex-col gap-3 sm:flex-row sm:justify-center">
                 <button type="button" data-action="retry" class="inline-flex items-center justify-center rounded-full bg-teal px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-teal/90 focus:outline-none focus:ring-2 focus:ring-teal/40">Try another code</button>
@@ -228,6 +296,145 @@
               state.loadError = '';
               state.names = [];
               state.people = {};
+              resetSubmitState();
+              updateUrlWithCode('');
+              render();
+            });
+          }
+          return;
+        }
+
+        if (status === 'summary' && summary) {
+          const submittedAtRaw =
+            summary.submittedAt || extractSubmittedAt(summary.rsvps);
+          const submittedAtLabel = formatSubmittedAt(submittedAtRaw);
+
+          let summaryTitle = 'RSVP already submitted';
+          let summaryBody =
+            'We already have this RSVP on file. If anything changes, please reach out.';
+          if (summary.notice === 'success') {
+            summaryTitle = 'RSVP received — thank you!';
+            summaryBody =
+              'We saved your responses below. If anything changes, please let us know.';
+          } else if (summary.notice === 'locked' && summary.message) {
+            summaryBody = summary.message;
+          } else if (summary.notice === 'existing' && summary.message) {
+            summaryBody = summary.message;
+          }
+
+          const summaryContactSuffix =
+            summary.notice === 'success'
+              ? `Messed something up? ${HOST_CONTACT_HTML}`
+              : `${HOST_CONTACT_HTML}`;
+
+          const summaryCards = names
+            .map((name, index) => {
+              const record = summary.rsvps ? summary.rsvps[name] : undefined;
+              const slug = slugify(name, index);
+              if (!record) {
+                return `
+                  <article class="space-y-4 rounded-[1.75rem] border border-teal/30 bg-white/80 p-6 shadow-sm">
+                    <header class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                      <h3 class="font-serif text-xl text-lagoon">${escapeHtml(name)}</h3>
+                      <span class="text-xs uppercase tracking-[0.3em] text-teal/70">Guest</span>
+                    </header>
+                    <p class="text-sm text-lagoon/70">We don’t have RSVP details for this guest yet.</p>
+                  </article>
+                `;
+              }
+
+              const drinksLine = record.attendingDrinks
+                ? 'Joining for the cocktail hour'
+                : 'Skipping the cocktail hour';
+
+              const dinnerLine = record.attendingDinner
+                ? 'Sharing dinner with us'
+                : 'Not staying for dinner';
+
+              const menuBlock =
+                record.attendingDinner && record.menu
+                  ? `
+                      <div class="rounded-2xl border border-teal/20 bg-mist/60 px-4 py-3 text-sm text-lagoon/80">
+                        <p class="text-xs uppercase tracking-[0.3em] text-teal/70">Dinner selections</p>
+                        <ul class="mt-2 space-y-1">
+                          <li><span class="font-semibold text-teal">Starter</span>: ${getMenuLabel('starter', record.menu.starter)}</li>
+                          <li><span class="font-semibold text-teal">Main</span>: ${getMenuLabel('main', record.menu.main)}</li>
+                          <li><span class="font-semibold text-teal">Dessert</span>: ${getMenuLabel('dessert', record.menu.dessert)}</li>
+                        </ul>
+                      </div>
+                    `
+                  : '';
+
+              const notesBlock = record.notes
+                ? `
+                    <div class="rounded-2xl border border-dashed border-teal/30 bg-white/70 px-4 py-3 text-sm text-lagoon/80">
+                      <p class="text-xs uppercase tracking-[0.3em] text-teal/70">Notes</p>
+                      <p class="mt-1">${escapeHtml(record.notes)}</p>
+                    </div>
+                  `
+                : '';
+
+              return `
+                <article class="space-y-5 rounded-[1.75rem] border border-teal/40 bg-white/85 p-6 shadow-sm" id="${slug}-summary">
+                  <header class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    <h3 class="font-serif text-xl text-lagoon">${escapeHtml(name)}</h3>
+                    <span class="text-xs uppercase tracking-[0.3em] text-teal/70">${record.attendingDinner || record.attendingDrinks ? 'Celebrating with you' : 'Sent regrets'}</span>
+                  </header>
+                  <ul class="space-y-3 text-sm text-lagoon/80">
+                    <li class="flex items-center gap-3">
+                      <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-mist/80 text-sm text-teal">🍸</span>
+                      <span>${escapeHtml(drinksLine)}</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                      <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-mist/80 text-sm text-teal">🍽️</span>
+                      <span>${escapeHtml(dinnerLine)}</span>
+                    </li>
+                  </ul>
+                  ${menuBlock}
+                  ${notesBlock}
+                </article>
+              `;
+            })
+            .join('');
+
+          container.innerHTML = `
+            <section class="space-y-8">
+              <header class="space-y-4 rounded-[1.75rem] border border-teal/30 bg-mist/60 p-6 text-center sm:text-left">
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-teal/70">RSVP Code</p>
+                    <p class="font-serif text-2xl text-lagoon">${escapeHtml(code)}</p>
+                  </div>
+                  <button type="button" data-action="change-code" class="inline-flex items-center justify-center rounded-full border border-teal/40 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-teal transition hover:border-teal/60 hover:bg-mist focus:outline-none focus:ring-2 focus:ring-teal/40">Submit another RSVP</button>
+                </div>
+                <div class="space-y-2">
+                  <h2 class="font-serif text-2xl text-lagoon">${escapeHtml(summaryTitle)}</h2>
+                  <p class="text-sm text-lagoon/70">${escapeHtml(summaryBody)}</p>
+                  <p class="text-sm text-lagoon/70">${summaryContactSuffix}</p>
+                  ${
+                    submittedAtLabel
+                      ? `<p class="text-xs uppercase tracking-[0.3em] text-teal/60">Submitted ${escapeHtml(submittedAtLabel)}</p>`
+                      : ''
+                  }
+                </div>
+              </header>
+              <div class="space-y-6">
+                ${summaryCards}
+              </div>
+            </section>
+          `;
+
+          const changeCodeButton = container.querySelector(
+            '[data-action="change-code"]',
+          );
+          if (changeCodeButton) {
+            changeCodeButton.addEventListener('click', () => {
+              state.code = '';
+              state.status = 'idle';
+              state.names = [];
+              state.people = {};
+              state.summary = null;
+              state.loadError = '';
               resetSubmitState();
               updateUrlWithCode('');
               render();
@@ -256,7 +463,7 @@
                     return `
                       <label for="${radioId}" class="flex cursor-pointer items-start gap-3 rounded-2xl border ${isActive ? 'border-teal bg-mist/90' : 'border-teal/30 bg-white/80'} p-3 text-sm text-lagoon transition hover:border-teal/60">
                         <input type="radio" id="${radioId}" name="${slug}-${category}" value="${option.id}" ${isActive ? 'checked' : ''} data-name="${escapeHtml(name)}" data-field="menu-${category}" class="mt-1 h-4 w-4 border-teal text-teal focus:ring-teal" />
-                        <span>${escapeHtml(option.label)}</span>
+                        <span>${option.label}</span>
                       </label>
                     `;
                   })
@@ -283,7 +490,7 @@
                   `
                 : `
                     <div class="mt-6 rounded-2xl border border-dashed border-teal/30 bg-white/60 p-5 text-sm text-lagoon/60">
-                      Select dinner above to unlock menu choices.
+                      Select dinner above to see menu choices.
                     </div>
                   `;
 
@@ -319,7 +526,6 @@
                         <input type="checkbox" id="${unableId}" ${person.unable ? 'checked' : ''} data-name="${escapeHtml(name)}" data-field="unable" class="h-4 w-4 rounded border-teal text-teal focus:ring-teal" />
                         <span class="font-medium">Sadly, I can't make it</span>
                       </label>
-                      <p class="mt-2 text-xs text-lagoon/60">Selecting this will clear the other options.</p>
                     </div>
                   </div>
 
@@ -328,6 +534,19 @@
               `;
             })
             .join('');
+
+          const failureNotice =
+            submitStatus === 'failure'
+              ? `
+                  <div class="space-y-2 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                    <p>${escapeHtml(
+                      submitMessage ||
+                        'We ran into a problem saving your RSVP. Please try again.',
+                    )}</p>
+                    <p class="text-xs text-red-700/80">${HOST_CONTACT_HTML}</p>
+                  </div>
+                `
+              : '';
 
           container.innerHTML = `
             <form id="rsvp-form" class="space-y-8">
@@ -339,19 +558,14 @@
                   </div>
                   <button type="button" data-action="change-code" class="inline-flex items-center justify-center rounded-full border border-teal/40 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-teal transition hover:border-teal/60 hover:bg-mist focus:outline-none focus:ring-2 focus:ring-teal/40">Change code</button>
                 </div>
-                <p class="text-sm text-lagoon/70">Select who is attending and choose dinner courses for each guest staying for the meal.</p>
               </header>
 
               ${formError ? `<p class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">${escapeHtml(formError)}</p>` : ''}
               ${submitStatus === 'success' ? `<p class="rounded-2xl border border-teal/40 bg-mist/70 px-4 py-3 text-sm text-teal/90">${escapeHtml(submitMessage || 'RSVP submitted! We’ll see you soon.')}</p>` : ''}
-              ${submitStatus === 'failure' ? `<p class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">${escapeHtml(submitMessage || 'We ran into a problem saving your RSVP. Please try again.')}</p>` : ''}
+              ${failureNotice}
 
               <div class="space-y-6">
                 ${personSections}
-              </div>
-
-              <div class="rounded-[1.75rem] border border-teal/30 bg-white/80 p-6">
-                <p class="text-sm text-lagoon/70">Need to tweak your answers later? Come back to this page with the same code.</p>
               </div>
 
               <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
@@ -510,18 +724,77 @@
 
                 const data = await response.json().catch(() => ({}));
                 if (!response.ok) {
-                  const message = data && data.message ? data.message : 'Unable to submit your RSVP right now.';
+                  if (response.status === 409) {
+                    const rsvps =
+                      data && typeof data.rsvps === 'object' && data.rsvps !== null
+                        ? data.rsvps
+                        : {};
+
+                    state.summary = {
+                      rsvps,
+                      submittedAt:
+                        (data && data.submittedAt) ||
+                        extractSubmittedAt(rsvps),
+                      notice: 'locked',
+                      message:
+                        (data && data.message) ||
+                        'We already have this RSVP on file for your code.',
+                    };
+                    state.status = 'summary';
+                    state.submitStatus = 'idle';
+                    state.submitMessage = '';
+                    state.formError = '';
+                    render();
+                    return;
+                  }
+
+                  const message =
+                    data && data.message
+                      ? data.message
+                      : 'Unable to submit your RSVP right now.';
                   state.submitStatus = 'failure';
                   state.submitMessage = message;
                   render();
                   return;
                 }
 
+                const fallbackTimestamp = new Date().toISOString();
+                const rsvps =
+                  data && typeof data.rsvps === 'object' && data.rsvps !== null
+                    ? data.rsvps
+                    : payload.reduce((acc, entry) => {
+                        acc[entry.name] = {
+                          attendingDrinks: entry.attendingDrinks,
+                          attendingDinner: entry.attendingDinner,
+                          menu: entry.menu
+                            ? {
+                                starter: entry.menu.starter,
+                                main: entry.menu.main,
+                                dessert: entry.menu.dessert,
+                              }
+                            : undefined,
+                          notes: entry.notes,
+                          submittedAt: fallbackTimestamp,
+                        };
+                        return acc;
+                      }, {});
+
+                const submittedAt =
+                  (data && data.submittedAt) || extractSubmittedAt(rsvps);
+
+                state.summary = {
+                  rsvps,
+                  submittedAt,
+                  notice: 'success',
+                  message:
+                    (data && data.message) ||
+                    'RSVP submitted successfully. We will confirm shortly.',
+                };
+                state.status = 'summary';
                 state.submitStatus = 'success';
                 state.submitMessage =
-                  data && data.message
-                    ? data.message
-                    : 'RSVP submitted successfully. We will confirm shortly.';
+                  (data && data.message) ||
+                  'RSVP submitted successfully. We will confirm shortly.';
                 render();
               } catch (error) {
                 console.error('Error submitting RSVP', error);
@@ -598,6 +871,30 @@
             acc[personName] = createPersonState(personName);
             return acc;
           }, {});
+          const rsvps =
+            data && typeof data.rsvps === 'object' && data.rsvps !== null
+              ? data.rsvps
+              : {};
+
+          if (Object.keys(rsvps).length > 0) {
+            state.summary = {
+              rsvps,
+              submittedAt:
+                (data && data.submittedAt) || extractSubmittedAt(rsvps),
+              notice: 'existing',
+              message:
+                (data && data.message) ||
+                'We already have an RSVP for this code. Here’s what we saved.',
+            };
+            state.status = 'summary';
+            state.submitStatus = 'idle';
+            state.submitMessage = '';
+            state.formError = '';
+            render();
+            return;
+          }
+
+          state.summary = null;
           state.status = 'ready';
           render();
         } catch (error) {
