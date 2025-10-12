@@ -72,8 +72,8 @@
         main: [
           { id: 'tenderloin', label: "<b>AAA Canadian beef tenderloin</b>, <em>carrots, pomme purée, green peppercorn jus</em>" },
           { id: 'salmon', label: "<b>BC spring salmon</b>, <em>beets, quinoa, charred lemon glaze</em>" },
-          { id: 'chicken', label: "<b>Fraser Valley chicken breast</b>, <em>spätzle, parsnips, natural jus</em" },
-          { id: 'vegetarion', label: "<b>Seasonal harvest</b>, <em>Potato rösti, seasonal vegetables, du Puy lentils</em>" }
+          { id: 'chicken', label: "<b>Fraser Valley chicken breast</b>, <em>spätzle, parsnips, natural jus</em>" },
+          { id: 'vegetarian', label: "<b>Seasonal harvest</b>, <em>Potato rösti, seasonal vegetables, du Puy lentils</em>" }
         ],
         dessert: [
           { id: 'lime curd', label: "<b>Lime curd</b>, <em>white chocolate chantilly, graham crumb, tonka bean</em>" },
@@ -210,6 +210,10 @@
         window.history.replaceState({}, '', url.toString());
       };
 
+      const setView = (view) => {
+        container.setAttribute('data-view', view);
+      };
+
       const render = () => {
         const {
           code,
@@ -222,10 +226,10 @@
         formError,
         summary,
       } = state;
-
         toggleSubmittingOverlay(submitStatus === 'submitting');
 
         if (!code) {
+          setView('idle');
           container.innerHTML = `
             <form id="code-form" class="space-y-8">
               <header class="space-y-3 text-center">
@@ -258,6 +262,7 @@
         }
 
         if (status === 'loading') {
+          setView('loading');
           container.innerHTML = `
             <div class="space-y-6 text-center">
               <div class="flex justify-center">
@@ -275,6 +280,7 @@
         }
 
         if (status === 'error') {
+          setView('error');
           container.innerHTML = `
             <div class="space-y-6 text-center">
               <div class="space-y-3">
@@ -305,6 +311,7 @@
         }
 
         if (status === 'summary' && summary) {
+          setView('summary');
           const submittedAtRaw =
             summary.submittedAt || extractSubmittedAt(summary.rsvps);
           const submittedAtLabel = formatSubmittedAt(submittedAtRaw);
@@ -436,6 +443,7 @@
         }
 
         if (status === 'ready') {
+          setView('form');
           const personSections = names
             .map((name, index) => {
               const person = people[name];
@@ -561,7 +569,7 @@
               </div>
 
               <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
-                <button type="submit" ${submitStatus === 'submitting' ? 'disabled' : ''} class="inline-flex items-center justify-center rounded-full bg-teal px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-teal/90 focus:outline-none focus:ring-2 focus:ring-teal/40 disabled:cursor-not-allowed disabled:opacity-70">
+                <button id="submit" type="submit" ${submitStatus === 'submitting' ? 'disabled' : ''} class="inline-flex items-center justify-center rounded-full bg-teal px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-teal/90 focus:outline-none focus:ring-2 focus:ring-teal/40 disabled:cursor-not-allowed disabled:opacity-70">
                   ${submitStatus === 'submitting' ? 'Sending RSVP…' : 'Submit RSVP'}
                 </button>
               </div>
@@ -620,7 +628,9 @@
               }
 
               resetSubmitState();
-              render();
+              window.requestAnimationFrame(() => {
+                  render();
+                })
             });
 
             form.addEventListener('input', (event) => {
