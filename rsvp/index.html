@@ -477,10 +477,17 @@
                 `;
               };
 
+              const vegetarianPairSelected =
+                person.menu.starter === 'greens' || person.menu.main === 'vegetarian';
+              const vegetarianMessage = vegetarianPairSelected
+                ? `<p class="rounded-xl border border-teal/30 bg-white/80 px-4 py-3 text-xs text-lagoon/80">If you want the vegetarian option, you'll need to order both the vegetarian starter and main. I know, it's dumb, but the option is really only supposed to be for vegetarians.</p>`
+                : '';
+
               const menuSection = person.attendingDinner
                 ? `
                     <div class="mt-6 space-y-6 rounded-2xl border border-teal/20 bg-mist/50 p-5">
                       <p class="text-sm font-medium text-lagoon/80">Choose a course for ${escapeHtml(name.replace('+1', '').trim() || name)}.</p>
+                      ${vegetarianMessage}
                       <div class="grid gap-6 md:grid-cols-3">
                         ${renderMenuGroup('starter', 'Starter', MENU_OPTIONS.starter)}
                         ${renderMenuGroup('main', 'Main', MENU_OPTIONS.main)}
@@ -623,7 +630,23 @@
               } else if (field.startsWith('menu-')) {
                 const category = field.split('-')[1];
                 if (person.attendingDinner) {
-                  person.menu = { ...person.menu, [category]: target.value };
+                  const updatedMenu = { ...person.menu, [category]: target.value };
+
+                  if (category === 'starter') {
+                    if (target.value === 'greens') {
+                      updatedMenu.main = 'vegetarian';
+                    } else if (updatedMenu.main === 'vegetarian') {
+                      updatedMenu.main = '';
+                    }
+                  } else if (category === 'main') {
+                    if (target.value === 'vegetarian') {
+                      updatedMenu.starter = 'greens';
+                    } else if (updatedMenu.starter === 'greens') {
+                      updatedMenu.starter = '';
+                    }
+                  }
+
+                  person.menu = updatedMenu;
                 }
               }
 
