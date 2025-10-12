@@ -73,7 +73,7 @@
           { id: 'tenderloin', label: "<b>AAA Canadian beef tenderloin</b>, <em>carrots, pomme purée, green peppercorn jus</em>" },
           { id: 'salmon', label: "<b>BC spring salmon</b>, <em>beets, quinoa, charred lemon glaze</em>" },
           { id: 'chicken', label: "<b>Fraser Valley chicken breast</b>, <em>spätzle, parsnips, natural jus</em" },
-          { id: 'vegetarion', label: "<b>Seasonal harvest<b>, <em>Potato rösti, seasonal vegetables, du Puy lentils</em>" }
+          { id: 'vegetarion', label: "<b>Seasonal harvest</b>, <em>Potato rösti, seasonal vegetables, du Puy lentils</em>" }
         ],
         dessert: [
           { id: 'lime curd', label: "<b>Lime curd</b>, <em>white chocolate chantilly, graham crumb, tonka bean</em>" },
@@ -378,7 +378,7 @@
                 <article class="space-y-5 rounded-[1.75rem] border border-teal/40 bg-white/85 p-6 shadow-sm" id="${slug}-summary">
                   <header class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <h3 class="font-serif text-xl text-lagoon">${escapeHtml(name)}</h3>
-                    <span class="text-xs uppercase tracking-[0.3em] text-teal/70">${record.attendingDinner || record.attendingDrinks ? 'Celebrating with you' : 'Sent regrets'}</span>
+                    <span class="text-xs uppercase tracking-[0.3em] text-teal/70">${record.attendingDinner || record.attendingDrinks ? 'Celebrating with you' : 'Can\'t make it'}</span>
                   </header>
                   <ul class="space-y-3 text-sm text-lagoon/80">
                     <li class="flex items-center gap-3">
@@ -405,7 +405,7 @@
                     <p class="text-xs uppercase tracking-[0.3em] text-teal/70">RSVP Code</p>
                     <p class="font-serif text-2xl text-lagoon">${escapeHtml(code)}</p>
                   </div>
-                  <button type="button" data-action="change-code" class="inline-flex items-center justify-center rounded-full border border-teal/40 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-teal transition hover:border-teal/60 hover:bg-mist focus:outline-none focus:ring-2 focus:ring-teal/40">Submit another RSVP</button>
+                  <button type="button" data-action="change-code" class="inline-flex items-center justify-center rounded-full border border-teal/40 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-teal transition hover:border-teal/60 hover:bg-mist focus:outline-none focus:ring-2 focus:ring-teal/40">Event Information</button>
                 </div>
                 <div class="space-y-2">
                   <h2 class="font-serif text-2xl text-lagoon">${escapeHtml(summaryTitle)}</h2>
@@ -429,15 +429,7 @@
           );
           if (changeCodeButton) {
             changeCodeButton.addEventListener('click', () => {
-              state.code = '';
-              state.status = 'idle';
-              state.names = [];
-              state.people = {};
-              state.summary = null;
-              state.loadError = '';
-              resetSubmitState();
-              updateUrlWithCode('');
-              render();
+                window.location.href = 'https://davidandsuzygotmarried.com/vancouver'
             });
           }
           return;
@@ -553,7 +545,7 @@
               <header class="space-y-3 rounded-[1.75rem] border border-teal/30 bg-mist/60 p-6">
                 <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                   <div>
-                    <p class="text-xs uppercase tracking-[0.3em] text-teal/70">Code</p>
+                    <p class="text-xs uppercase tracking-[0.3em] text-teal/70">RSVP Code</p>
                     <p class="font-serif text-2xl text-lagoon">${escapeHtml(code)}</p>
                   </div>
                   <button type="button" data-action="change-code" class="inline-flex items-center justify-center rounded-full border border-teal/40 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-teal transition hover:border-teal/60 hover:bg-mist focus:outline-none focus:ring-2 focus:ring-teal/40">Change code</button>
