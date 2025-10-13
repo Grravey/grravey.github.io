@@ -566,6 +566,9 @@
                   <button type="button" data-action="change-code" class="inline-flex items-center justify-center rounded-full border border-teal/40 bg-white/90 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-teal transition hover:border-teal/60 hover:bg-mist focus:outline-none focus:ring-2 focus:ring-teal/40">Change code</button>
                 </div>
               </header>
+              <p class="rounded-2xl border border-teal/20 bg-mist/70 px-4 py-3 text-sm text-lagoon/80">
+                Food allergies can be accomodated. ${HOST_CONTACT_HTML}
+              </p>
 
               ${formError ? `<p class="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">${escapeHtml(formError)}</p>` : ''}
               ${submitStatus === 'success' ? `<p class="rounded-2xl border border-teal/40 bg-mist/70 px-4 py-3 text-sm text-teal/90">${escapeHtml(submitMessage || 'RSVP submitted! We’ll see you soon.')}</p>` : ''}
