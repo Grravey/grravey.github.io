@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David &amp; Suzy | RSVP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lagoon: '#0C3A47',
+            drift: '#1F5664',
+            pine: '#2F6B57',
+            teal: '#4C8B7A',
+            mist: '#E7F4F3',
+            cloud: '#F7FBFB',
+            blush: '#F0E4DC',
+          },
+          fontFamily: {
+            sans: ['Work Sans', 'Inter', 'system-ui', 'sans-serif'],
+            serif: ['Playfair Display', 'Georgia', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body data-api-base="https://i0venlddpb.execute-api.us-west-2.amazonaws.com/prod" data-event="california" class="bg-cloud text-lagoon font-sans antialiased">
+  <main class="mx-auto flex min-h-screen max-w-4xl flex-col gap-12 px-4 py-16 sm:px-6 sm:py-20">
+    <header class="rounded-[2.5rem] border border-teal/40 bg-white/85 p-10 text-center shadow-sm backdrop-blur-sm sm:p-14">
+      <div class="space-y-6">
+        <span class="inline-flex items-center justify-center gap-2 rounded-full bg-teal/10 px-4 py-1 text-xs uppercase tracking-[0.4em] text-teal">RSVP</span>
+        <h1 id="rsvp-hero-title" class="font-serif text-4xl font-semibold sm:text-5xl">Join us for dinner</h1>
+        <p id="rsvp-hero-description" class="mx-auto max-w-2xl text-base leading-relaxed text-lagoon/80">
+          Let us know who will be joining us.
+        </p>
+      </div>
+    </header>
+
+    <section class="flex-1">
+      <div id="app" class="space-y-6 rounded-[2rem] border border-teal/30 bg-white/70 p-8 shadow-sm backdrop-blur-sm sm:p-10">
+        <div class="space-y-3 text-center">
+          <p class="font-serif text-2xl text-lagoon">Loading RSVP details…</p>
+          <p class="text-sm text-lagoon/70">If you see this message for more than a moment, enable JavaScript in your browser.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="pb-6 text-center text-xs uppercase tracking-[0.3em] text-lagoon/50">
+      <span>David &amp; Suzy &middot; 2025</span>
+    </footer>
+  </main>
+
+  <script src="../../assets/js/rsvp-california.js"></script>
+
+</body>
+</html>
