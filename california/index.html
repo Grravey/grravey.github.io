@@ -47,14 +47,14 @@
     </section>
 
     <section class="grid gap-4 sm:grid-cols-3">
-      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
-        <img src="../assets/big-tree.jpg" alt="David and Suzy smiling" class="h-full w-full object-cover" />
+      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm" style="aspect-ratio: 4 / 5;">
+        <img src="../assets/muddy-pond-2.jpg" alt="David and Suzy smiling" class="h-full w-full object-cover" />
       </figure>
-      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
-        <img src="../assets/forest.jpg" alt="David and Suzy walking together" class="h-full w-full object-cover" />
-      </figure>
-      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm">
+      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm" style="aspect-ratio: 4 / 5;">
         <img src="../assets/proposal.jpg" alt="Milkshake cheers" class="h-full w-full object-cover" />
+      </figure>
+      <figure data-cycle-gallery class="overflow-hidden rounded-3xl border border-teal/40 bg-mist/70 shadow-sm" style="aspect-ratio: 4 / 5;">
+        <img src="../assets/forest.jpg" alt="David and Suzy walking together" class="h-full w-full object-cover" />
       </figure>
     </section>
 
@@ -184,12 +184,15 @@
       const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
       const assetSources = [
-        '../assets/apple.jpg',
+        '../assets/muddy-pond-1.jpg',
         '../assets/big-tree.jpg',
+        '../assets/apple.jpg',
         '../assets/forest.jpg',
         '../assets/marina.jpg',
+        '../assets/muddy-pond-2.jpg',
         '../assets/proposal.jpg',
         '../assets/redwood-cottage.jpg',
+        '../assets/cyprus.jpg',
         '../assets/scuba.jpg',
       ];
 
